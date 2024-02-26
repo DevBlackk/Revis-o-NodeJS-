@@ -1,16 +1,12 @@
-import 'dotenv/config'
-import postgres from 'postgres'
+import { Sequelize } from "sequelize";
 
-let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+export const sequelize = new Sequelize('postgresql://davidsonwferreira8:hF72LIJDwKXY@ep-flat-dream-a515pcbg.us-east-2.aws.neon.tech/dojo?sslmode=require')
 
-export const sql = postgres({
-  host: PGHOST,
-  database: PGDATABASE,
-  username: PGUSER,
-  password: PGPASSWORD,
-  port: 5432,
-  ssl: 'require',
-  connection: {
-    options: `project=${ENDPOINT_ID}`,
-  },
-});
+export async function testConnection() {
+  try {
+    await sequelize.authenticate()
+    console.log('Conectado!')
+  } catch (error) {
+    console.log(`Conexão mal sucedida! ${error}`)
+  }
+}
