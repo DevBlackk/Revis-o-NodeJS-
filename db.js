@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize('postgresql://davidsonwferreira8:hF72LIJDwKXY@ep-flat-dream-a515pcbg.us-east-2.aws.neon.tech/dojo?sslmode=require')
+export const sequelize = new Sequelize('Criem uma conta no nion e coloquem o db aqui.')
 
 export async function testConnection() {
   try {
